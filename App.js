@@ -56,7 +56,7 @@ const getUserInfo = async (token) => {
       </Text>
       <Text>EcoFeat!</Text>
       <Button title='Sign in with Google' onPress={promptAsync} />
-      <Text></Text>
+      <Button title='delete local storage' onPress={() => AsyncStorage.removeItem("@user")}/>
       <StatusBar style="auto" />
     </View>
   );
