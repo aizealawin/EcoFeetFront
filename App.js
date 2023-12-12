@@ -17,17 +17,43 @@ const [request, response, promptAsync] = Google.useAuthRequest({
   webClientId: "984535196441-4khlf4lpas9ah2octt4ciuvlaouq91o9.apps.googleusercontent.com"
 })
 
+React.useEffect(() => {
+  handleSignInWithGoogle();
+}, [response])
+
 async function handleSignInWithGoogle() {
   const user = await AsyncStorage.getItem("@user");
   if (!user){
-
+    if(response?.type === 'success'){
+      await getUserInfo(response.authentication.accessToken);
+    }
   } else {
-    setUserInfo(JSON.parse(user))
+    setUserInfo(JSON.parse(user));
+  }
+}
+
+const getUserInfo = async (token) => {
+  if (!token) return;
+  try { 
+    const response = await fetch(
+      "https://www.googleapis.com/userinfo/v2/me", 
+      {
+        headers: { Authorization: `Bearer ${token}`}
+      }
+    )
+    const user = await response.json();
+    await AsyncStorage.setItem("@user", JSON.stringify(user))
+    setUserInfo(user)
+  } catch (error) { 
+
   }
 }
 
   return (
     <View style={styles.container}>
+      <Text> 
+      {JSON.stringify(userInfo)}
+      </Text>
       <Text>EcoFeat!</Text>
       <Button title='Sign in with Google' onPress={promptAsync} />
       <Text></Text>
