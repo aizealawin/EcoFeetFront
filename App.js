@@ -52,10 +52,10 @@ const getUserInfo = async (token) => {
   return (
     <View style={styles.container}>
       <Text> 
-      {JSON.stringify(userInfo)}
+      {JSON.stringify(userInfo, null, 2)}
       </Text>
       <Text>EcoFeat!</Text>
-      <Button title='Sign in with Google' onPress={promptAsync} />
+      <Button title='Sign in with Google' onPress={() => promptAsync()} />
       <Button title='delete local storage' onPress={() => AsyncStorage.removeItem("@user")}/>
       <StatusBar style="auto" />
     </View>
