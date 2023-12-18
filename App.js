@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import * as WebBrowser from "expo-web-browser"
 import * as Google from 'expo-auth-session/providers/google'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -55,8 +55,12 @@ const getUserInfo = async (token) => {
       {JSON.stringify(userInfo, null, 2)}
       </Text>
       <Text>EcoFeat!</Text>
-      <Button title='Sign in with Google' onPress={() => promptAsync()} />
-      <Button title='delete local storage' onPress={() => AsyncStorage.removeItem("@user")}/>
+      <Pressable title='Sign in with Google' onPress={() => promptAsync()}>
+        <Text>
+          Sign in with Google
+        </Text>
+      </Pressable>
+      <Pressable title='delete local storage' onPress={() => AsyncStorage.removeItem("@user")}/>
       <StatusBar style="auto" />
     </View>
   );
