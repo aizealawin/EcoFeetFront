@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { StyleSheet, View, Text } from 'react-native';
 import GoogleAuth from './components/GoogleAuth';
 
 
