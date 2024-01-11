@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { StyleSheet, View, Text } from 'react-native';
-import { Link } from "expo-router"
-import GoogleAuth from './components/GoogleAuth';
-import Landing from './pages/Landing';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { Link, router } from "expo-router"
+// import GoogleAuth from './app/components/GoogleAuth';
+// import Landing from './app/pages/Landing';
 
 
 export default function App() {
@@ -11,7 +11,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <GoogleAuth/> */}
-      <Landing/>
+      {/* <Landing/> */}
+      <Text>Home page</Text>
     </View>
   );
 
